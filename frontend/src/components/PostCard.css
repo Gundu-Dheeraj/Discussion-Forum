@@ -1,0 +1,96 @@
+.post-card {
+  display: flex;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.post-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(108,99,255,0.12);
+  text-decoration: none;
+}
+
+.post-card-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  width: 36px;
+}
+.vote-btn {
+  background: none;
+  border: none;
+  color: var(--text3);
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.15s;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vote-btn.up:hover { color: var(--success); background: rgba(67,233,123,0.1); }
+.vote-btn.down:hover { color: var(--danger); background: rgba(255,71,87,0.1); }
+.vote-score {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1;
+}
+
+.post-card-body { flex: 1; min-width: 0; }
+.post-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.cat-tag {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-head);
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.post-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.post-card-desc {
+  font-size: 14px;
+  color: var(--text2);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.post-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.post-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.post-author { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); }
+.mini-avatar {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: #fff;
+}
+.post-stats { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text3); }
+.post-time { color: var(--text3); }

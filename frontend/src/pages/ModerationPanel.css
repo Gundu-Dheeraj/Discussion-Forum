@@ -1,0 +1,93 @@
+.mod-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+.mod-header { margin-bottom: 24px; }
+.mod-header h1 { font-size: 28px; font-weight: 800; }
+.mod-sub { color: var(--text2); margin-top: 4px; }
+
+.mod-tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  color: var(--text2);
+  font-size: 14px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-badge {
+  background: var(--danger);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+
+.status-filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.status-filter-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.status-filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.status-filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.reports-list { display: flex; flex-direction: column; gap: 12px; }
+.report-card { padding: 18px; }
+.report-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.report-type-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+.report-type-badge[data-type="Post"] { background: rgba(108,99,255,0.2); color: var(--accent); }
+.report-type-badge[data-type="Comment"] { background: rgba(255,101,132,0.2); color: var(--accent2); }
+
+.reason-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  background: rgba(247,183,49,0.15);
+  color: var(--warning);
+  font-weight: 600;
+}
+.status-chip {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status-chip.status-pending { background: rgba(255,71,87,0.15); color: var(--danger); }
+.status-chip.status-reviewed { background: rgba(108,99,255,0.15); color: var(--accent); }
+.status-chip.status-action-taken { background: rgba(67,233,123,0.15); color: var(--success); }
+.status-chip.status-dismissed { background: var(--bg3); color: var(--text3); }
+.report-time { font-size: 12px; color: var(--text3); margin-left: auto; }
+
+.report-desc { font-size: 14px; color: var(--text2); margin-bottom: 10px; }
+.report-meta { display: flex; gap: 16px; font-size: 13px; color: var(--text3); margin-bottom: 12px; }
+.report-meta code { background: var(--bg3); padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+.report-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.section-label { font-size: 16px; font-weight: 700; margin: 20px 0 12px; color: var(--text2); }
+.flagged-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.flagged-desc { font-size: 14px; color: var(--text2); margin-bottom: 10px; }
