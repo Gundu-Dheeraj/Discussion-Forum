@@ -13,6 +13,14 @@ export default function Profile() {
   const [tab, setTab] = useState('posts');
 
   useEffect(() => {
+    // Fetch fresh user data to ensure stats (postsCount, etc) are current
+    API.get('/auth/me').then(({ data }) => {
+      updateUser(data);
+      setForm({ username: data.username || '', bio: data.bio || '', avatar: data.avatar || '' });
+    }).catch(() => {});
+  }, []);
+
+  useEffect(() => {
     API.get('/posts?limit=20').then(({ data }) => {
       setMyPosts((data.posts || []).filter((p) => p.author?._id === user?._id));
     }).catch(() => {});
