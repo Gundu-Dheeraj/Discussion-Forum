@@ -59,6 +59,7 @@ exports.createComment = async (req, res) => {
     });
 
     await Post.findByIdAndUpdate(req.params.postId, { $inc: { commentsCount: 1 } });
+    await require('../models/User').findByIdAndUpdate(req.user._id, { $inc: { commentsCount: 1 } });
 
     // Notify post author
     if (post.author.toString() !== req.user._id.toString()) {
@@ -100,6 +101,11 @@ exports.deleteComment = async (req, res) => {
     }
     comment.status = 'removed';
     await comment.save();
+
+    // Decrement counts
+    await require('../models/User').findByIdAndUpdate(comment.author, { $inc: { commentsCount: -1 } });
+    await Post.findByIdAndUpdate(comment.post, { $inc: { commentsCount: -1 } });
+
     res.json({ message: 'Comment removed' });
   } catch (err) {
     res.status(500).json({ message: err.message });
