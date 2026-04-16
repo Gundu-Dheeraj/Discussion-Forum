@@ -119,22 +119,6 @@ exports.deletePost = async (req, res) => {
   }
 };
 
-// ⚠ TEMPORARY stats sync endpoint – REMOVE after use!
-exports.syncStats = async (req, res) => {
-  if (req.query.key !== 'sync2026') return res.status(403).json({ message: 'Forbidden' });
-  try {
-    const users = await User.find();
-    for (let u of users) {
-      const pCount = await Post.countDocuments({ author: u._id });
-      const cCount = await Comment.countDocuments({ author: u._id });
-      await User.findByIdAndUpdate(u._id, { postsCount: pCount, commentsCount: cCount });
-    }
-    res.json({ message: 'All user stats synced successfully!' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
 // @GET /api/posts/stats/overview  
 exports.getStats = async (req, res) => {
   try {
