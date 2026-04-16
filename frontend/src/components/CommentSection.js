@@ -136,6 +136,11 @@ export default function CommentSection({ postId, postAuthorId, initialComments =
   const [submitting, setSubmitting] = useState(false);
   const [sortBy, setSortBy] = useState('latest');
 
+  // Sync state if initialComments changes (e.g. after async fetch finishes)
+  React.useEffect(() => {
+    setComments(initialComments);
+  }, [initialComments]);
+
   const sortedComments = [...comments].sort((a, b) => {
     if (sortBy === 'top') return (b.upvotes?.length - b.downvotes?.length) - (a.upvotes?.length - a.downvotes?.length);
     if (sortBy === 'best') return b.isBestAnswer - a.isBestAnswer;
