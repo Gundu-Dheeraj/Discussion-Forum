@@ -28,8 +28,8 @@ export default function Home() {
       if (category !== 'All') params.append('category', category);
       if (search) params.append('search', search);
       const { data } = await API.get(`/posts?${params}`);
-      setPosts(data.posts);
-      setTotalPages(data.pagination.pages);
+      setPosts(data.posts || []);
+      setTotalPages(data.pagination?.pages || 1);
     } catch { }
     setLoading(false);
   }, [page, category, sort, search]);

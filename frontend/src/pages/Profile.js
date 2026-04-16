@@ -14,7 +14,7 @@ export default function Profile() {
 
   useEffect(() => {
     API.get('/posts?limit=20').then(({ data }) => {
-      setMyPosts(data.posts.filter((p) => p.author?._id === user?._id));
+      setMyPosts((data.posts || []).filter((p) => p.author?._id === user?._id));
     }).catch(() => {});
   }, [user]);
 
@@ -78,7 +78,7 @@ export default function Profile() {
       <div className="profile-hero card fade-in">
         <div className="profile-avatar-container">
           {user?.avatar ? (
-            <img src={`http://localhost:5000${user.avatar}`} alt="Avatar" className="profile-avatar-img" />
+            <img src={`${(process.env.REACT_APP_API_URL || '').replace('/api', '')}${user.avatar}`} alt="Avatar" className="profile-avatar-img" />
           ) : (
             <div className="profile-avatar">{initials}</div>
           )}

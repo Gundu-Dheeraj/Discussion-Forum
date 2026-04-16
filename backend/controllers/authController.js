@@ -97,26 +97,15 @@ exports.forgotPassword = async (req, res) => {
     const resetToken = user.getResetPasswordToken();
     await user.save();
 
-    const os = require('os');
-    const localIp = Object.values(os.networkInterfaces())
-        .flat()
-        .find(i => i.family === 'IPv4' && !i.internal)?.address || 'localhost';
-
-    const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
-    const altUrl = `http://127.0.0.1:3000/reset-password/${resetToken}`;
-    const mobileUrl = `http://${localIp}:3000/reset-password/${resetToken}`;
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    const resetUrl = `${frontendUrl}/reset-password/${resetToken}`;
     
     const message = `You requested a password reset for DecisionForge.
     
-💻 IF YOU ARE ON YOUR LAPTOP/PC:
-Click this link: ${resetUrl}
-(If that doesn't work, try: ${altUrl})
+Click this link to reset your password:
+${resetUrl}
 
-📱 IF YOU ARE ON YOUR MOBILE PHONE:
-Click this link: ${mobileUrl}
-(Make sure your phone is connected to the same Wi-Fi as your laptop!)
-
-If clicking fails, COPY and PASTE the correct link directly into your browser.
+If you did not request this, please ignore this email.
 
 Note: This link is only valid for 10 minutes.`;
 
