@@ -28,7 +28,7 @@ export default function Register() {
   return (
     <div className="auth-page">
       <div className="auth-card card fade-in">
-        <div className="auth-logo">⚖ Decision<strong>Forge</strong></div>
+        <div className="auth-logo">⚖ Discussion<strong>Forum</strong></div>
         <h2 className="auth-title">Create account</h2>
         <p className="auth-sub">Join the community of decision-makers</p>
 

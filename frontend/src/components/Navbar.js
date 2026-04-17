@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import API from '../utils/api';
 import './Navbar.css';
 
 export default function Navbar() {
   const { user, logout, isMod, isAdmin } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [notifs, setNotifs] = useState([]);
@@ -65,6 +67,9 @@ export default function Navbar() {
         </div>
 
         <div className="navbar-actions">
+          <button className="theme-toggle" onClick={toggleTheme} title="Toggle Theme">
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
           {user ? (
             <>
               <Link to="/create" className="btn btn-primary btn-sm">+ New Post</Link>
